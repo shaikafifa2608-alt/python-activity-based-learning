@@ -1,0 +1,803 @@
+Case 1: Advanced Numeric Pattern Generator
+Selected PDF case number 27
+Problem Statement
+Read a whole-number size from 3 to 9 and print a hollow numeric diamond. Show an error for sizes outside this range.
+Objectives
+•	Print a hollow diamond for sizes 3 to 9.
+•	Reject sizes outside the allowed range.
+Assumptions
+•	Use a whole-number size from 3 to 9.
+•	The program checks the range, not text input.
+Algorithm
+1. Read size.
+2. Check whether size is from 3 to 9.
+3. Use two loops to print the upper and lower diamond.
+Flowchart
+ 1. ADVANCED NUMERIC PATTERN GENERATOR
+
++-------+
+| START |
++-------+
+    |
+    v
++------------------------------+
+| Enter pattern input values   |
++------------------------------+
+    |
+    v
+  /----------------------\
+ < Are inputs valid?      >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Generate numeric|  | Show input error  |
+| pattern         |  +-------------------+
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show the pattern |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+
+
+Pseudocode
+READ size
+IF size outside 3..9: DISPLAY error
+ELSE print rows 1..size and size-1..1
+
+ Case 1: Python Source Code
+Runnable file: advanced_numeric_pattern_generator.py
+size = int(input("Enter size (3 to 9): "))
+if size < 3 or size > 9:
+    print("Invalid size")
+else:
+    for row in range(1, size + 1):
+        if row == 1:
+            print(" " * (size - 1) + "1")
+        else:
+            print(" " * (size - row) + str(row) + " " * (2 * row - 3) + str(row))
+    for row in range(size - 1, 0, -1):
+        if row == 1:
+            print(" " * (size - 1) + "1")
+        else:
+            print(" " * (size - row) + str(row) + " " * (2 * row - 3) + str(row))
+Test Cases
+Input	Expected output
+5	Print a hollow diamond.
+3	Print the smallest supported diamond.
+2	Show invalid size.
+Conclusion
+The Advanced Numeric Pattern Generator program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 2: Progressive Electricity Billing
+Selected PDF case number 2
+Problem Statement
+Calculate a household electricity bill using progressive unit rates and a fixed charge.
+Objectives
+•	Calculate an electricity bill using simple progressive slabs.
+•	Add the fixed charge.
+Assumptions
+•	Fixed charge is Rs.50.
+•	Progressive rates: first 100 units at Rs.1.50, next 100 at Rs.2.50, next 100 at Rs.4.00, and later units at Rs.6.00.
+Algorithm
+1. Read units.
+2. Reject negative units.
+3. Use if/elif/else to calculate the slab bill.
+4. Add the fixed charge and display.
+Flowchart
+ 2. PROGRESSIVE ELECTRICITY BILLING
+
++-------+
+| START |
++-------+
+    |
+    v
++------------------------------+
+| Enter electricity units used |
++------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the units valid?   >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Calculate bill   |  | Show input error  |
+| using bill slabs |  +-------------------+
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show bill amount |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+
+
+Pseudocode
+READ units
+IF units<0: DISPLAY error
+ELSE IF units<=100: calculate first slab
+ELSE IF units<=200: calculate first two slabs
+ELSE: calculate first two slabs and remaining units
+Add fixed charge; display
+
+ Python Source Code
+Runnable file: progressive_electricity_billing.py
+units = float(input("Enter units: "))
+if units < 0:
+    print("Units cannot be negative")
+elif units <= 100:
+    bill = units * 1.5 + 50
+    print("Bill:", bill)
+elif units <= 200:
+    bill = 100 * 1.5 + (units - 100) * 2.5 + 50
+    print("Bill:", bill)
+elif units <= 300:
+    bill = 100 * 1.5 + 100 * 2.5 + (units - 200) * 4 + 50
+    print("Bill:", bill)
+else:
+    bill = 100 * 1.5 + 100 * 2.5 + 100 * 4 + (units - 300) * 6 + 50
+    print("Bill:", bill)
+Test Cases
+Input	Expected output
+250	Bill is Rs.650.00.
+0	Bill is Rs.50.00.
+-5	Show negative-units error.
+
+Conclusion
+The Progressive Electricity Billing program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 3: Employee Payroll and Deduction Analysis
+Selected PDF case number 4
+Problem Statement
+Calculate an employee gross salary and net salary from basic pay, allowances, and overtime.
+Objectives
+•	Calculate gross pay and net pay.
+•	Apply a deduction based on the gross pay.
+Assumptions
+•	HRA is 20% and DA is 10% of basic pay.
+•	Overtime is Rs.150 per hour.
+•	Deduction is 5% when gross is at most Rs.30,000; otherwise it is 10%.
+•	Enter numeric, non-negative values.
+Algorithm
+1. Read basic pay and overtime hours.
+2. Calculate allowances and gross pay.
+3. Use if/else to select deduction rate.
+4. Display gross and net salary.
+Flowchart
+ EMPLOYEE PAYROLL AND DEDUCTION ANALYSIS
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter pay and deduction details |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Calculate gross |  | Show input error  |
+| pay, deductions |  +-------------------+
+| and net pay     |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show payroll    |          |
+| summary         |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+
+Pseudocode
+READ basic and overtime hours
+Calculate HRA, DA, overtime, gross
+IF gross<=30000: net=gross*0.95
+ELSE: net=gross*0.90
+DISPLAY gross and net
+
+Python Source Code
+Runnable file: employee_payroll_and_deduction_analysis.py
+basic = float(input("Basic pay: "))
+hours = float(input("Overtime hours: "))
+hra = basic * 0.20
+da = basic * 0.10
+gross = basic + hra + da + hours * 150
+if gross <= 30000:
+    net = gross * 0.95
+else:
+    net = gross * 0.90
+print("Gross salary:", gross)
+print("Net salary:", net)
+Test Cases
+Input	Expected output
+20000, 10	Gross Rs.27500; net Rs.26125.
+25000, 0	Gross Rs.32500; net Rs.29250.
+
+Conclusion
+The Employee Payroll and Deduction Analysis program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 4: Retail Billing with Multiple Discount Rules
+Selected PDF case number 7
+Problem Statement
+Calculate an invoice for exactly two products, with a threshold discount and tax.
+Objectives
+•	Bill exactly two products.
+•	Apply a discount and tax using if/else.
+Assumptions
+•	Enter exactly two products.
+•	A 10% discount applies when subtotal is at least Rs.1,000.
+•	Tax is 5% after discount.
+Algorithm
+1. Read the two prices and quantities.
+2. Calculate subtotal.
+3. Use if/else to apply the discount.
+4. Add 5% tax and display.
+Flowchart
+ RETAIL BILLING WITH MULTIPLE DISCOUNT RULES
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter item prices and quantities |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Calculate        |  | Show input error  |
+| subtotal, apply  |  +-------------------+
+| discounts, and   |          |
+| find final total |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show bill       |          |
+| summary         |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+Pseudocode
+READ two prices and quantities
+subtotal=price1*qty1+price2*qty2
+IF subtotal>=1000: discount=10%
+ELSE: discount=0
+Add 5% tax; DISPLAY total
+
+ Python Source Code
+Runnable file: retail_billing_with_multiple_discount_rules.py
+price1 = float(input("Price of product 1: "))
+quantity1 = int(input("Quantity of product 1: "))
+price2 = float(input("Price of product 2: "))
+quantity2 = int(input("Quantity of product 2: "))
+subtotal = price1 * quantity1 + price2 * quantity2
+if subtotal >= 1000:
+    discount = subtotal * 0.10
+else:
+    discount = 0
+final_amount = (subtotal - discount) * 1.05
+print("Subtotal:", subtotal)
+print("Discount:", discount)
+print("Final amount with tax:", final_amount)
+Test Cases
+Input	Expected output
+600x1 and 500x1	Subtotal 1100; discount 110; total 1039.50.
+200x1 and 100x1	Subtotal 300; no discount; total 315.
+
+Conclusion
+The Retail Billing with Multiple Discount Rules program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 5: Attendance Recovery Computation
+Selected PDF case number 12
+Problem Statement
+Calculate the minimum number of future classes a student must attend to reach the target attendance.
+Objectives
+•	Find how many future classes must be attended to reach a target.
+Assumptions
+•	Held classes must be greater than zero.
+•	The student attends every future class.
+•	Use a target below 100% unless already at 100%.
+Algorithm
+1. Read attended, held, and target.
+2. Count future classes with a while loop until the target is reached.
+3. Display the count.
+Flowchart
+ ATTENDANCE RECOVERY COMPUTATION
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter classes held and attended  |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Check attendance|  | Show input error  |
+| percentage and  |  +-------------------+
+| classes needed  |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show attendance |          |
+| result          |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+Pseudocode
+READ attended, held, target
+needed=0
+WHILE future attendance < target: needed=needed+1
+DISPLAY needed
+
+Python Source Code
+Runnable file: attendance_recovery_computation.py
+attended = int(input("Classes attended: "))
+held = int(input("Classes held: "))
+target = int(input("Target percentage: "))
+if held <= 0 or attended < 0 or attended > held or target < 1 or target > 100:
+    print("Invalid attendance values")
+elif target == 100 and attended < held:
+    print("100 percent cannot be reached by attending future classes")
+else:
+    needed = 0
+    while (attended + needed) * 100 / (held + needed) < target:
+        needed = needed + 1
+    print("Classes to attend:", needed)
+Test Cases
+Input	Expected output
+60,100,75	Attend 60 more classes.
+80,100,75	0 more classes.
+
+Conclusion
+The Attendance Recovery Computation program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 6: ATM Transaction Sequence Simulation
+Selected PDF case number 13
+Problem Statement
+Simulate one ATM deposit or withdrawal and display the new balance.
+Objectives
+•	Process one deposit or withdrawal.
+•	Keep the balance from becoming negative.
+Assumptions
+•	This very small example processes one transaction per run.
+•	Enter a positive amount and type D or W.
+Algorithm
+1. Read balance, transaction type, and amount.
+2. Use if/elif/else to deposit, withdraw if possible, or reject.
+3. Display balance.
+Flowchart
+ ATM TRANSACTION SEQUENCE SIMULATION
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter balance, transaction type, |
+| and transaction amount           |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Process the ATM  |  | Show input error  |
+| transaction and  |  +-------------------+
+| update balance   |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show transaction|          |
+| result and      |          |
+| new balance     |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+Pseudocode
+READ balance, type, amount
+IF type is D: add amount
+ELSE IF type is W and amount<=balance: subtract amount
+ELSE: reject
+DISPLAY balance
+
+Python Source Code
+Runnable file: atm_transaction_sequence_simulation.py
+balance = float(input("Balance: "))
+kind = input("D for deposit, W for withdrawal: ")
+amount = float(input("Amount: "))
+if kind == "D":
+    balance = balance + amount
+    print("Deposit accepted")
+elif kind == "W" and amount <= balance:
+    balance = balance - amount
+    print("Withdrawal accepted")
+else:
+    print("Transaction rejected")
+print("Final balance:", balance)
+Test Cases
+Input	Expected output
+1000,D,500	Deposit accepted; balance 1500.
+1000,W,1200	Transaction rejected; balance 1000.
+
+Conclusion
+The ATM Transaction Sequence Simulation program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 7: Nested Loop Examination Seating Generator
+Selected PDF case number 26
+Problem Statement
+Print a 2 by 2 classroom seating grid and mark one reserved position.
+Objectives
+•	Print a small 2 by 2 seating plan.
+•	Mark one reserved seat.
+Assumptions
+•	The classroom is fixed at 2 rows by 2 columns.
+•	Enter one reserved seat using row and column values 1 or 2.
+Algorithm
+1. Use nested while loops to visit each position in a 2x2 grid.
+2. Print XX at the chosen position and a seat number elsewhere.
+Flowchart
+ NESTED LOOP EXAMINATION SEATING GENERATOR
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter rows, columns, and reserved|
+| seat position                   |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Create seating  |  | Show input error  |
+| grid and mark   |  +-------------------+
+| reserved seat   |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show seating    |          |
+| grid            |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+
+Pseudocode
+READ reserved row and column
+FOR each of 2 rows
+  FOR each of 2 columns: print XX if reserved, otherwise seat number
+
+Python Source Code
+Runnable file: nested_loop_examination_seating_generator.py
+rows = 2
+columns = 2
+reserved_row = int(input("Reserved row (1 or 2): "))
+reserved_column = int(input("Reserved column (1 or 2): "))
+row = 1
+while row <= rows:
+    column = 1
+    line = ""
+    while column <= columns:
+        if row == reserved_row and column == reserved_column:
+            line = line + "XX "
+        else:
+            line = line + str(row) + str(column) + " "
+        column = column + 1
+    print(line)
+    row = row + 1
+Test Cases
+Input	Expected output
+1,2	Print a 2x2 seating grid with XX at row 1, column 2.
+2,2	Print a 2x2 grid with the last seat reserve
+
+Conclusion
+The Nested Loop Examination Seating Generator program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 8: Password Policy Validation Engine
+Selected PDF case number 29
+Problem Statement
+Check a sample password against a minimum-length rule.
+Objectives
+•	Check whether a sample password has at least 8 characters.
+Assumptions
+•	This beginner version checks password length only.
+•	A password with 8 or more characters passes this simple check.
+Algorithm
+1. Read a sample password.
+2. Use if/else to check whether its length is at least 8.
+3. Display the result.
+Flowchart
+ NESTED LOOP EXAMINATION SEATING GENERATOR
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter rows, columns, and reserved|
+| seat position                   |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Create seating  |  | Show input error  |
+| grid and mark   |  +-------------------+
+| reserved seat   |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show seating    |          |
+| grid            |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+
+Pseudocode
+READ password
+IF length>=8: DISPLAY long enough
+ELSE DISPLAY too short
+ Python Source Code
+Runnable file: password_policy_validation_engine.py
+password = input("Enter password: ")
+if len(password) >= 8:
+    print("Password is long enough")
+else:
+    print("Password must have at least 8 characters")
+Test Cases
+Input	Expected output
+Abcdef12	Passes the length check.
+abc	Fails the length check.
+
+Conclusion
+The Password Policy Validation Engine program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 9: Nested Loop Calendar Generator
+Selected PDF case number 37
+Problem Statement
+Print a monthly calendar using a starting weekday and number of days.
+Objectives
+•	Print a calendar from its first weekday and number of days.
+Assumptions
+•	Enter a starting weekday from 0 to 6.
+•	Enter a month length from 28 to 31 days.
+•	This example uses loops to print dates.
+Algorithm
+1. Read first weekday and number of days.
+2. Check their ranges.
+3. Use a while loop to place dates into weeks and print.
+Flowchart
+ NESTED LOOP CALENDAR GENERATOR
+
++-------+
+| START |
++-------+
+    |
+    v
++----------------------------------+
+| Enter first weekday and number   |
+| of days in the month             |
++----------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Arrange days in |  | Show input error  |
+| a calendar grid |  +-------------------+
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show calendar   |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+Pseudocode
+READ starting weekday and days
+IF values outside allowed ranges: DISPLAY error
+ELSE use a loop to print dates in seven-day rows
+
+Python Source Code
+Runnable file: nested_loop_calendar_generator.py
+start = int(input("First day (0=Mon to 6=Sun): "))
+days = int(input("Number of days (28 to 31): "))
+if start < 0 or start > 6 or days < 28 or days > 31:
+    print("Invalid calendar values")
+else:
+    print("Mon Tue Wed Thu Fri Sat Sun")
+    line = "    " * start
+    position = start
+    day = 1
+    while day <= days:
+        if day < 10:
+            line = line + "  " + str(day) + " "
+        else:
+            line = line + str(day) + "  "
+        position = position + 1
+        if position == 7:
+            print(line)
+            line = ""
+            position = 0
+        day = day + 1
+    if line != "":
+        print(line)
+Test Cases
+Input	Expected output
+2,30	Print a calendar starting Wednesday.
+7,30	Show invalid calendar values.
+
+ 
+Conclusion
+The Nested Loop Calendar Generator program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
+
+ Case 10: Student Marks Matrix Analysis
+Selected PDF case number 42
+Problem Statement
+Calculate the total, average, and pass/fail result for one student in three subjects.
+Objectives
+•	Calculate total and average for one student.
+•	Decide pass or fail for three marks.
+Assumptions
+•	This beginner version handles one student and three subjects.
+•	Each mark is an integer from 0 to 100; 40 is the pass mark.
+Algorithm
+1. Read three marks.
+2. Calculate total and average.
+3. Use if/else to decide pass or fail.
+Flowchart
+ STUDENT MARKS MATRIX ANALYSIS
+
++-------+
+| START |
++-------+
+    |
+    v
++------------------------------+
+| Enter students' marks        |
++------------------------------+
+    |
+    v
+  /----------------------\
+ < Are the inputs valid? >
+  \----------------------/
+    | Yes             | No
+    v                 v
++------------------+  +-------------------+
+| Calculate each  |  | Show input error  |
+| student's total,|  +-------------------+
+| average, and    |          |
+| pass or fail    |          |
++------------------+          |
+    |                         |
+    v                         |
++------------------+          |
+| Show marks      |          |
+| analysis        |          |
++------------------+          |
+    |                         |
+    +------------+------------+
+                 |
+                 v
+              +-----+
+              | END |
+              +-----+
+Pseudocode
+READ three marks
+Calculate total and average
+IF every mark>=40: DISPLAY Pass
+ELSE DISPLAY Fail
+Python Source Code
+Runnable file: student_marks_matrix_analysis.py
+mark1 = int(input("Mark 1: "))
+mark2 = int(input("Mark 2: "))
+mark3 = int(input("Mark 3: "))
+total = mark1 + mark2 + mark3
+average = total / 3
+print("Total:", total)
+print("Average:", average)
+if mark1 >= 40 and mark2 >= 40 and mark3 >= 40:
+    print("Pass")
+else:
+    print("Fail")
+Test Cases
+Input	Expected output
+80,70,90	Total 240; average 80; Pass.
+80,39,90	Fail because one mark is below 40.
+
+Conclusion
+The Student Marks Matrix Analysis program applies its stated rules, validates the supplied data, and presents a clear result using introductory Python constructs.
